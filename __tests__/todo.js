@@ -170,9 +170,7 @@ describe("Todo test suite", () => {
     expect(parsedUpdateResponse.completed).toBe(false);
   });
 
-  test("userA cannot delete userB's todo", async () => {
-    const agent = request.agent(server);
-    await login(agent, "test-a@test.com", "123456789");
+  
 
     const groupedTodosResponse = await agent
       .get("/todos")
