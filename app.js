@@ -1,4 +1,3 @@
-
 /* eslint-disable no-undef */
 const express = require("express");
 const app = express();
@@ -8,6 +7,7 @@ app.use(bodyParser.json());
 const path = require("path");
 
 app.set("view engine", "ejs");
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", async (request, response) => {
@@ -70,7 +70,7 @@ app.delete("/todos/:id", async function (request, response) {
   const deleteTodo = await Todo.destroy({
     where: {
       id: request.params.id,
-    },  
+    },
   });
   response.send(deleteTodo ? true : false);
 
