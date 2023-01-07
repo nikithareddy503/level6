@@ -174,9 +174,7 @@ describe("Todo test suite", () => {
     const agent = request.agent(server);
     await login(agent, "test-a@test.com", "123456789");
 
-    const groupedTodosResponse = await agent
-      .get("/todos")
-      .set("Accept", "application/json");
+    
 
     const parsedGroupedResponse = JSON.parse(groupedTodosResponse.text);
     const dueTodayCount = parsedGroupedResponse.duetodaytodos.length;
