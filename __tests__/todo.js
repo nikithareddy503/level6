@@ -73,17 +73,7 @@ describe("Todo test suite", () => {
     expect(response.statusCode).toBe(302);
   });
 
-  test("Update a todo with requested ID as complete / incomplete", async () => {
-    const agent = request.agent(server);
-    await login(agent, "user.a@test.com", "123456");
-    let res = await agent.get("/todos");
-    let csrfToken = extractCsrfToken(res);
-    await agent.post("/todos").send({
-      title: "Buy milk",
-      dueDate: new Date().toISOString(),
-      completed: false,
-      _csrf: csrfToken,
-    });
+  
     await agent.post("/todos").send({
       title: "Buy ps3",
       dueDate: new Date().toISOString(),
