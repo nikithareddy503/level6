@@ -37,7 +37,16 @@ describe("Todo test suite", () => {
     }
   });
 
-  
+  test("Sign up", async () => {
+    let res = await agent.get("/signup");
+    const csrfToken = extractCsrfToken(res);
+    res = await agent.post("/users").send({
+      firstName: "Test",
+      lastName: "User A",
+      email: "user.a@test.com",
+      password: "123456",
+      _csrf: csrfToken,
+    });
     expect(res.statusCode).toBe(302);
   });
 
@@ -230,8 +239,5 @@ describe("Todo test suite", () => {
     console.log("delete test");
     console.log(deletestatus);
 
-    deletestatus
-      ? expect(deletestatus).toBe(true)
-      : expect(deletestatus).toBe(false);
-  });
+    
 });
