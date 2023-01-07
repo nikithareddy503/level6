@@ -98,14 +98,7 @@ describe("Todo test suite", () => {
   const dueTodayCount = parsedGroupedResponse.duetodaytodos.length;
   const latestTodo = parsedGroupedResponse.duetodaytodos[dueTodayCount - 1];
 
-    res = await agent.get("/todos");
-    csrfToken = extractCsrfToken(res);
-
-    const markCompleteResponse = await agent
-      .put(`/todos/${latestTodo.id}`)
-      .send({
-        _csrf: csrfToken,
-      });
+    
 
     const parsedUpdateResponse = JSON.parse(markCompleteResponse.text);
     parsedUpdateResponse.completed
