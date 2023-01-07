@@ -229,11 +229,7 @@ describe("Todo test suite", () => {
     const dueTodayCount = parsedGroupedResponse.duetodaytodos.length;
     const latestTodo = parsedGroupedResponse.duetodaytodos[dueTodayCount - 1];
 
-    res = await agent.get("/todos");
-    csrfToken = extractCsrfToken(res);
-    const deleteResponse = await agent.delete(`/todos/${latestTodo.id}`).send({
-      _csrf: csrfToken,
-    });
+    
 
     const deletestatus = JSON.parse(deleteResponse.text);
     console.log("delete test");
