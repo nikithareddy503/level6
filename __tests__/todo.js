@@ -107,7 +107,11 @@ describe("Todo test suite", () => {
         _csrf: csrfToken,
       });  
 
-    
+      const parsedUpdateResponse = JSON.parse(markCompleteResponse.text);
+      parsedUpdateResponse.completed
+        ? expect(parsedUpdateResponse.completed).toBe(true)
+        : expect(parsedUpdateResponse.completed).toBe(false);
+    }); 
 
   test("userA cannot update userB's todo", async () => {
     const agent = request.agent(server);
