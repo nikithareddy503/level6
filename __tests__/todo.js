@@ -22,12 +22,7 @@ const login = async (agent, username, password) => {
   });
 };
 
-describe("Todo test suite", () => {
-  beforeAll(async () => {
-    await db.sequelize.sync({ force: true });
-    server = app.listen(4000, () => {});
-    agent = request.agent(server);
-  });
+
   afterAll(async () => {
     try {
       await db.sequelize.close();
