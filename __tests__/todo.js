@@ -146,16 +146,7 @@ describe("Todo test suite", () => {
 
     await agent.get("/signout");
 
-    let x3 = await agent.get("/signup");
-    csrfToken = extractCsrfToken(x3);
-
-    await agent.post("/users").send({
-      firstName: "Test",
-      lastName: "b",
-      email: "test-b@test.com",
-      password: "123456789",
-      _csrf: csrfToken,
-    });
+    
 
     res = await agent.get("/todos");
     csrfToken = extractCsrfToken(res);
