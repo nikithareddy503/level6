@@ -137,14 +137,7 @@ describe("Todo test suite", () => {
         _csrf: csrfToken,
       });
 
-    const groupedTodosResponse = await agent
-      .get("/todos")
-      .set("Accept", "application/json");
-    const parsedGroupedResponse = JSON.parse(groupedTodosResponse.text);
-    const dueTodayCount = parsedGroupedResponse.duetodaytodos.length;
-    const latestTodo = parsedGroupedResponse.duetodaytodos[dueTodayCount - 1];
-
-    await agent.get("/signout");
+    
 
     let x3 = await agent.get("/signup");
     csrfToken = extractCsrfToken(x3);
